@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Where Love Begins</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      color: white;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      flex-wrap: wrap;
+    }
+
+    .logo-title {
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav a {
+      color: bisque;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 4px 0;
+    }
+
+    @media (max-width: 768px) {
+      .logo-title {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0.5rem;
+      }
+
+      .hamburger {
+        display: flex;
+        margin-left: auto;
+      }
+
+      nav {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding: 1rem 0;
+        gap: 1rem;
+      }
+
+      nav.show {
+        display: flex;
+      }
+    }
+
+    main {
+      max-width: 90%;
+      margin: 4rem auto;
+      padding: 2rem;
+      background-color: rgba(255, 255, 255, 0.88);
+      border-radius: 10px;
+      color: #000;
+      font-size: 1rem;
+      line-height: 1.7;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      margin: 0 auto;
+      text-align: center;
+      font-size: 2.2rem;
+      text-shadow: 2px 2px 4px black;
+    }
+
+    h3 {
+      font-style: italic;
+      color: darkred;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+  </style>
+</head>
+<body>
+  <video autoplay muted loop id="bg-video">
+    <source src="video3.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <header>
+    <div class="logo-title">Unheard Voices</div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <nav id="navMenu">
+      <a href="page1.html">Home</a>
+      <a href="page4.html">Poems</a>
+      <a href="page2.html">Foods</a>
+    </nav>
+  </header>
+  <main>
+    <h3><i>Dive in</i></h3>
+    <hr />
+    <p>
+      In lands where sun-scorched earth gives way to dust,<br>
+      A nation bleeds, a people's hope unjust.<br>
+      The golden promise, whispered long ago,<br>
+      Now fractured lies, a bitter, cruelest blow.<br><br>
+
+      The wealthy dine on feasts of gilded grace,<br>
+      While children weep for crumbs upon the place.<br>
+      Corruption's grip, a serpent's deadly coil,<br>
+      Squeezes the life from this once fertile soil.<br><br>
+
+      A wind of change, a promise yet unseen,<br>
+      Sweeps through the streets, where futures fade between.<br>
+      The cries of mothers, fathers, young and old,<br>
+      A story etched in pain, a tale untold.<br><br>
+
+      Yet, even here, where shadows darkly creep,<br>
+      A spark remains, a promise yet to keep.<br>
+      For in the hearts of those who fight to rise,<br>
+      A future blooms beneath these troubled skies.
+    </p>
+  </main>
+
+  <footer>
+    © Alex Fredie Records
+  </footer>
+  <script>
+    function toggleMenu() {
+      document.getElementById("navMenu").classList.toggle("show");
+    }
+  </script>
+</body>
+</html>

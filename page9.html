@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Where Love Begins</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      color: #222;
+      line-height: 1.6;
+      position: relative;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: rgba(255, 192, 203, 0.4);
+      backdrop-filter: blur(6px);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #fff;
+      text-shadow: 2px 2px 5px #000;
+      margin-bottom: 1rem;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: white;
+      background: none;
+      border: none;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    nav a {
+      color: bisque;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background-color: rgba(255, 255, 255, 0.85);
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    main h3 {
+      color: #b30059;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.5);
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        flex-direction: column;
+        display: none;
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 1rem;
+        border-radius: 8px;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      nav a {
+        font-size: 1.2rem;
+        padding: 0.5rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <video autoplay muted loop id="bg-video" playsinline>
+    <source src="video7.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <header>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <h1>Special you</h1>
+    <nav id="nav">
+      <a href="page1.html">Home</a>
+      <a href="page4.html">Poems</a>
+      <a href="page2.html">Foods</a>
+    </nav>
+  </header>
+  <main class="poem-page">
+    <h3><i>Dive in</i></h3>
+    <hr>
+    <p>
+      Across the space, my eyes take flight,<br>
+      A silent language, day and night.<br><br><br>
+      Your smile, a sunbeam, warm and bright,<br>
+      Across the room, you hold my light.<br>
+      My heart, a drum, begins to beat,<br><br>
+      A rhythm sweet, both strong and neat.<br>
+      Each glance a promise, bittersweet,<br>
+      Across the room, our worlds meet.<br>
+      Though words may fail, my feelings bloom,<br><br>
+      Dispelling doubt, and chasing gloom.<br>
+      Across the room, I long to come,<br>
+      And whisper, "You're my only one."
+    </p>
+  </main>
+  <footer>
+    © Alex Fredie records
+  </footer>
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('nav');
+      nav.classList.toggle('show');
+    }
+  </script>
+
+</body>
+</html>

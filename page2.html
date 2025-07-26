@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>World Dishes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+      background-color: goldenrod;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 10px;
+      transition: background-color 0.3s;
+    }
+
+    nav li a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 6px;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: white;
+      margin: 4px 0;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: rgba(0, 0, 0, 0.9);
+        flex-direction: column;
+        width: 200px;
+        padding: 10px;
+        border-radius: 10px;
+        display: none;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      text-align: center;
+      padding: 0 20px;
+      z-index: 2;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+    }
+
+    .hero-text p {
+      font-size: 1.3rem;
+      margin-top: 10px;
+    }
+
+  
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin: 40px 0 20px;
+    }
+
+    .meals {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .meal-card {
+      background-color: #fff6e5;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      text-align: cover;
+    }
+
+    .meal-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .meal-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+   
+
+    footer {
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 30px;
+    }
+
+
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #ffa07a;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: background-color 0.3s;
+}
+
+#backToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ffa07a;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: background-color 0.3s;
+}
+
+.music-btn:hover,
+#backToTop:hover {
+  background-color: #ff7f50;
+}
+
+@media (max-width: 500px) {
+  .music-btn,
+  #backToTop {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+}
+.meal-card {
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+}
+@keyframes fadeInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+  <link rel="icon" href="favicon.png" type="image/png" />
+
+  <nav>
+    <div class="logo">World Dishes</div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul id="menu">
+      <li><a href="page1.html">Home</a></li>
+      <li><a href="page3.html">Lovables</a></li>
+      <li><a href="#music">Music</a></li>
+      <li><a href="#footer">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero" id="hero">
+    <video autoplay muted loop playsinline>
+      <source src="food.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="overlay"></div>
+    <div class="hero-text">
+      <h1>Welcome to World Dishes</h1>
+      <p style="color: orange;">Explore the tastes aspired by Ondara</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1 class="section-title" id="meals">Top World Dishes</h1>
+    <div class="meals">
+      <div class="meal-card">
+        <h2>1.Butter Chicken(India)</h2>
+        <img src="food1.jpg" alt="Butter Chicken" />
+        <p>🍗✨ Imagine tender chicken melting in your mouth, drenched in a silky, spiced tomato-cream sauce...
+🍅🥥 Every bite is a warm hug of buttery bliss, dancing with rich Indian flavors and a hint of sweetness!
+🍛🔥 Served with fluffy naan or rice.It's a creamy, dreamy explosion of joy on your taste buds!</p>
+      </div>
+
+
+      <div class="meal-card">
+        <h2>2.Beef Lasagna(Italy)</h2>
+        <img src="food2.jpg" alt="Beef Lasagna" />
+        <p>🍝🔥 Layers on layers of cheesy, meaty goodness.Each forkful melts like a warm, savory dream!
+🧀😋 The rich tomato sauce hugs the tender beef and pasta like a love story on a plate!
+🤤❤️ One bite and you're in comfort food heaven cheesy, saucy, and absolutely unforgettable!</p>
+      </div>
+
+
+      <div class="meal-card">
+        <h2>3.Grilled Tilapia with Ugali & Sukuma Wiki </h2>
+        <img src="food3.jpg" alt="Sushi Rolls" />
+        <p>🐟🔥 Smoky, juicy grilled tilapia crackles with flavor perfectly charred on the outside, tender inside!
+🍽️💪 Paired with firm, warm ugali that fills your soul, and sukuma wiki bursting with garlicky goodness!
+😋🌿 Every bite is a celebration of tradition, strength, and pure Kenyan comfort on a plate!</p>
+      </div>
+ 
+      <div class="meal-card">
+        <h2>4.Chicken Alfredo Pasta (USA/Italy)</h2>
+        <img src="food4.jpg" alt="Sushi Rolls" />
+        <p>🍝🐔 Creamy Alfredo sauce hugs each pasta strand like a silky blanket, with tender chicken soaking in every drop!
+🧄🧀 A rich blend of garlic, parmesan, and butter makes your taste buds sing with every twirl of the fork!
+🤍😋 It’s smooth, dreamy, and comforting like a love letter from Italy straight to your plate!</p>
+      </div>
+   
+      <div class="meal-card">
+        <h2>5.Sushi Platter</h2>
+        <img src="food5.jpg" alt="Sushi Rolls" />
+        <p>🍣🎌 A sushi platter is pure edible art colorful rolls packed with fresh fish, creamy avocado, and crisp veggies!
+🌊🍱 Each bite is a wave of flavor: cool, clean, and perfectly balanced with soy, wasabi, and pickled ginger!
+😋✨ It’s light yet luxurious a fresh, elegant dance of textures that melts in your mouth like magic!</p>
+      </div>
+
+      <div class="meal-card">
+        <h2>6.Chapati with Beef Stew </h2>
+        <img src="food6.jpg" alt="Sushi Rolls" />
+        <p>🥘🥖 Chapati na mchuzi wa nyama ni tamu hadi mwisho wa ulimi – laini kama pamba, na ladha ya mchuzi wake ni moto moto na tamu tamu!
+🍛🔥 Mchuzi una chemsha roho, umejaa vipande vya nyama laini vinavyoyeyuka mdomoni!
+😋💃 Ni chakula cha furaha, cha familia, na cha kupendeza kila tonge ni baraka kwa moyo na tumbo!
+Najua mahaters mtasema overrated but For me chapo for life manze Haron Muthetia anajua mbona muulizeni😋😋😋</p>
+      </div>
+
+      <div class="meal-card">
+        <h2>7.Shawarma Wrap (Middle East)</h2>
+        <img src="food7.jpg" alt="Sushi Rolls" />
+        <p>🌯🔥 Shawarma wrap is a juicy, sizzling bundle of flavor tender meat roasted to perfection, wrapped in soft, warm pita!
+🥙🧄 Bursting with creamy garlic sauce, crunchy pickles, and spicy goodness in every bite!
+🤤💥 It's a street food masterpiece bold, messy, mouthwatering, and totally addictive!
+</p>
+      </div>
+       <div class="meal-card">
+        <h2>8.Pilau</h2>
+        <img src="food8.jpg" alt="Sushi Rolls" />
+        <p>😂 Alright, imagine this:
+
+🌯🔥 It's like meat that spins on a stick until it's super juicy, then they slice it up and put it in soft bread.
+🥙😋 They throw in some creamy white sauce (tastes like heaven), some crunchy stuff (like pickles), and wrap it all tight.
+🤯💥 You bite it BOOM! Your mouth goes “whoa!” It’s messy, meaty, and crazy delicious.You’ll want five more!</p>
+      </div>
+      <div class="meal-card">
+        <h2>9.TACOS</h2>
+        <img src="food9.jpg" alt="Sushi Rolls" />
+        <p>🤣 Okay, picture this:
+🌮💃 A taco is like a tiny crunchy boat carrying meat, cheese, and dreams and it sails straight into your mouth!
+🥩🧀 They cram in spicy beef, melty cheese, veggies, and sometimes stuff you didn’t even ask for but it works!
+🤪🔥 You take a bite and CRUNCH!,the taco explodes like a flavor grenade. You’ll drop stuff everywhere, but you won’t even care!</p>
+      </div>
+  
+      <div class="meal-card">
+        <h2>10.Sweet & Sour Chicken with Rice (China)</h2>
+        <img src="food10.jpg" alt="Sushi Rolls" />
+        <p>🍍🐔 Sweet & sour chicken is like candy and chicken had a delicious baby crispy, tangy, and sweet all at once!
+🍚🔥 Paired with fluffy rice, it’s a sticky, saucy party in your mouth messy but totally worth it!
+😋🎉 One bite and your taste buds start dancing like, “Yooo what was THAT?!”</p>
+      </div>
+
+    </div>
+
+   <button class="music-btn" onclick="toggleMusic()">🎵 Play Music</button>
+<button id="backToTop" onclick="scrollToTop()">⬆️ Top</button>
+
+
+    <footer id="footer">
+      <p>Created with ❤️ by Fredrick Ondara. Exploring food, culture, and code.</p>
+
+  <a href= "https://www.linkedin.com/in/fredrick-ondara-617570339/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3Bd5f6IZceSxidTMqrrOcqfw%3D%3D" >
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" width="24" height="24">
+      <p>&#8482active on linkedin</p> 
+    </a>and whatsapp;+254703589175 & +254731055192.
+    </footer>
+  </div>
+
+  <script>
+    const menu = document.getElementById("menu");
+    function toggleMenu() {
+      menu.classList.toggle("active");
+    }
+
+    let musicPlaying = false;
+    let audio = new Audio('tu.mp3'); 
+
+    function toggleMusic() {
+      if (musicPlaying) {
+        audio.pause();
+      } else {
+        audio.play();
+      }
+      musicPlaying = !musicPlaying;
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

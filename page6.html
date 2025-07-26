@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Where Love Begins</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      color: #222;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.85); 
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(6px);
+      color: white;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      text-shadow: 1px 1px 4px black;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.2rem;
+    }
+
+    nav a {
+      color: bisque;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 4px 0;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.85);
+        flex-direction: column;
+        display: none;
+        padding: 1rem 0;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    main {
+      max-width: 700px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background-color: rgba(255, 255, 255, 0.92);
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+    }
+
+    h3 {
+      font-style: italic;
+      color: darkred;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+  </style>
+</head>
+<body>
+  <video autoplay muted loop id="bg-video">
+    <source src="video2.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <header>
+    <div class="logo-title">Where Love Begins</div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <nav id="navMenu">
+      <a href="page1.html">Home</a>
+      <a href="page4.html">Poems</a>
+      <a href="page2.html">Foods</a>
+    </nav>
+  </header>
+
+  <main>
+    <h3><i>Dive in</i></h3>
+    <hr>
+    <p>
+      somewhere i have never travelled, gladly beyond<br>
+      any experience, your eyes have their silence:<br>
+      in your most frail gesture are things which enclose me,<br>
+      or which i cannot touch because they are too near<br><br>
+
+      your slightest look easily will unclose me<br>
+      though i have closed myself as fingers,<br>
+      you open always petal by petal myself as Spring opens<br>
+      (touching skilfully, mysteriously) her first rose<br><br>
+
+      or if your wish be to close me, i and<br>
+      my life will shut very beautifully, suddenly,<br>
+      as when the heart of this flower imagines<br>
+      the snow carefully everywhere descending;<br><br>
+
+      nothing which we are to perceive in this world equals<br>
+      the power of your intense fragility: whose texture<br>
+      compels me with the colour of its countries,<br>
+      rendering death and forever with each breathing<br><br>
+
+      (i do not know what it is about you that closes<br>
+      and opens; only something in me understands<br>
+      the voice of your eyes is deeper than all roses)<br>
+      nobody, not even the rain, has such small hands
+    </p>
+  </main>
+
+  <footer>
+    © Alex Fredie Records
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navMenu").classList.toggle("show");
+    }
+  </script>
+
+</body>
+</html>

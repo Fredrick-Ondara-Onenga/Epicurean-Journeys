@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wander Dreams by Ondara</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #ffe5d9;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 10px;
+      transition: background-color 0.3s;
+    }
+
+    nav li a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 6px;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 28px;
+      background: #fff;
+      margin: 5px 0;
+      border-radius: 2px;
+      transition: 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav ul {
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        width: 220px;
+        padding: 15px;
+        border-radius: 10px;
+        display: none;
+        transition: 0.3s ease;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      nav li {
+        padding: 10px 0;
+      }
+
+      nav li a {
+        font-size: 1rem;
+      }
+    }
+
+    .video-section {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video-section video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-overlay-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 10;
+    }
+
+    .hero-text {
+      color: #fff;
+      animation: fadeIn 2s ease-out;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      background: linear-gradient(to right, #fff9e6, #ffd6a5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 6px rgba(255, 255, 255, 0.2);
+      margin-bottom: 10px;
+    }
+
+    .hero-text p {
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: #fff3cc;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    section.place-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      box-sizing: border-box;
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    section.place-section h2 {
+      font-size: 2rem;
+      color: #e67e22;
+      margin-bottom:10px;
+    }
+
+    section.place-section p {
+      font-size: 1rem;
+      line-height: 1.6;
+      max-width: 800px;
+      text-align: justify;
+      word-break: 2px;
+    }
+
+    section.place-section img {
+      max-width: 90%;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #f1f1f1;
+    }
+
+    #music-toggle, #scroll-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #e67e22;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 30px;
+      color: white;
+      cursor: pointer;
+      margin-top: 10px;
+      font-weight: bold;
+      z-index: 999;
+    }
+
+    #scroll-top {
+      right: 90px;
+      background: #2e86de;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Wander Dreams</div>
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+  </div>
+  <ul id="menu">
+    <li><a href="page1.html">Home</a></li>
+    <li><a href="page2.html">Meals</a></li>
+    <li><a href="page4.html">Poems</a></li>
+  </ul>
+</nav>
+
+<div class="video-section">
+  <video autoplay muted loop>
+    <source src="placed.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <div class="video-overlay-text">
+    <div class="hero-text">
+      <h1>Welcome to my Paradise</h1>
+      <p>Explore the places inspired by Ondara</p>
+    </div>
+  </div>
+</div>
+
+<section class="place-section" style="background-color: lightyellow;">
+  <h2>1. BALI (INDONESIA)</h2>
+  <img src="place1.jpg" alt="Bali" />
+  <p>🌴🔥 Bali is a tropical wonderland where every corner feels like a postcard come to life!
+🏖️💃 From golden beaches to jungle waterfalls, it’s the ultimate mix of peace and party!
+🛕✨ Temples glow with culture, sunsets paint the sky, and the vibes? 100% magical!
+🥥😋 The food slaps, the people smile, and your soul will feel like it’s finally home.
+🎉🧘‍♀️ Whether you're here to vibe, explore, or heal — Bali never disappoints, it delivers!</p>
+</section>
+
+<section class="place-section" style="background-color:orange;">
+  <h2>2.SANTORINI(Greece)</h2>
+  <img src="place2.jpg" alt="Barcelona" />
+  <p>
+    💙 Santorini, Greece is a living postcard white houses, blue roofs, and views that steal your breath!
+🌅🔥 The sunsets? Unreal. Like the sky is flexing just for you every evening!
+🍇🍷 Wander through cliffside villages, sip local wine, and feel the ocean breeze in your soul.
+📸✨ Every corner is Instagram begging for a photo you literally can’t take a bad pic here.
+💃💕 Whether it’s romance, beauty, or pure peace Santorini hits different!
+  </p>
+</section>
+
+<section class="place-section" style="background-color:skyblue;">
+  <h2>3.Iceland</h2>
+  <img src="place3.jpg" alt="Barcelona">
+  <p>❄️🔥 Iceland is like stepping into another planet where fire meets ice in the wildest, most epic way!
+🌋💨 Volcanoes rumble, geysers blast, and waterfalls roar like nature’s own fireworks show!
+🌌✨ The Northern Lights dance just for you green and purple magic swirling across the sky.
+🧊🏞️ Black sand beaches, glowing blue lagoons, and landscapes that leave your jaw on the floor!
+😮📸 It’s cold, it’s crazy, it’s unforgettable Iceland isn’t just a trip, it’s a whole experience!
+  </p>
+</section>
+
+
+<section class="place-section" style="background-color:yellow;">
+  <h2>4.Rome</h2>
+  <img src="place4.jpg" alt="Barcelona">
+  <p>🏛️🔥 Rome is a living museum where every step tells a story ancient, bold, and totally legendary!
+🍕🎭 One moment you’re at the Colosseum, the next you're devouring pizza by a bubbling fountain.
+💫📜 From gladiators to popes, emperors to artists history literally hugs you here!
+☕💃 The streets buzz with espresso, fashion, and that spicy Italian charm you’ll never forget.
+❤️🇮🇹 Rome doesn’t whisper… it shouts beauty, passion, and adventure in every corner!
+  </p>
+</section>
+
+<section class="place-section" style="background-color:lightblue;">
+  <h2>5.Paris</h2>
+  <img src="place5.jpg" alt="Barcelona">
+  <p>🥐💋 Paris is pure poetry every cobblestone whispers romance, and every café sings a love song!
+🗼❤️ The Eiffel Tower sparkles like it’s winking at you,especially at night when the city turns to magic.
+🎨🖌️ From the art in the Louvre to the charm of Montmartre, beauty drips from every corner.
+☕🥖 Croissants in the morning,wine at sunset it’s a full-time love affair with life itself!
+💞🇫🇷 Paris doesn’t just capture your heart… it steals it, kisses it, and keeps it forever.
+  </p>
+</section>
+
+<section class="place-section" style="background-color:orange;">
+  <h2>6.BARCELONA</h2>
+  <img src="place6.jpg" alt="Barcelona" />
+  <p>
+    🌆🔥 Barcelona is electric a city that vibes with color, rhythm,and unstoppable energy!
+🎨🏰 Gaudí’s wild buildings twist like dreams, and every street feels like a living art gallery.
+⚽👑 And let’s be real this is Messi’s kingdom, where football isn’t just a game,it’s religion!
+🌊☀️ From beach chills to rooftop thrills, the city serves sun, sea,and unforgettable nights.
+💃🇪🇸 Barcelona dances in your heart bold, beautiful,and always ready to fiesta!
+  </p>
+</section>
+
+<section class="place-section" style="background-color:lightgreen;">
+  <h2>7.Machu Pichu</h2>
+  <img src="place7.jpg" alt="Barcelona">
+  <p>⛰️✨ Machu Picchu is a mystical masterpiece hidden high in the Andes of Peru ancient, sacred, and breathtaking!
+🌄🌿 Perched above the clouds, it feels like walking into a lost world carved by the gods.
+🦙📜 Every stone whispers Incan secrets, and the views? Absolutely jaw-dropping from every angle!
+🥾🔥 The journey there is an adventure of its own through mountains, mist, and pure magic.
+💚🇵🇪 Machu Picchu isn’t just a destination… it’s a soul-stirring experience you’ll never forget!
+  </p>
+</section>
+
+<section class="place-section" style="background-color:lightyellow;">
+  <h2>8.Bali</h2>
+  <img src="place8.jpg" alt="Barcelona">
+  <p>  🌴🔥 Bali is a paradise that hits all the senses warm sun, wild waves, and vibes that heal your soul!
+🏄‍♂️🌊 From surfing epic beaches to chasing jungle waterfalls, every day feels like a dream unlocked.
+🛕✨ Temples glow with peace, incense floats in the air, and sunsets? Pure golden fire in the sky!
+🥥💃 Whether you're meditating in Ubud or dancing in Canggu, Bali feeds both your spirit and your fun side.
+💖🇮🇩 It’s not just a trip it’s a feeling. Bali hugs your heart and never lets go!
+  </p>
+</section>
+
+<section class="place-section" style="background-color:lightsalmon;">
+  <h2>9.Maldives</h2>
+  <img src="place9.jpg" alt="Barcelona">
+  <p>🏝️💦 The Maldives is a slice of heaven dropped right into the Indian Ocean pure, calm, and breathtakingly blue!
+🌊🐠 Overwater villas float like dreams, with crystal clear water beneath and skies that never stop smiling.
+🌅🥂 Sunsets melt into the sea while you sip coconut drinks and forget what stress even means.
+🛶🐬 Snorkel with vibrant fish, drift on paddleboards, or just do nothing and love every second of it.
+💙🇲🇻 The Maldives isn’t just a getaway...it’s luxury, serenity, and magic all wrapped in waves!
+
+  </p>
+</section>
+
+<section class="place-section" style="background-color:beige;">
+  <h2>10.Sichuan</h2>
+  <img src="place10.jpg" alt="Barcelona" />
+  <p>🐼🔥 Sichuan Province is a spicy,stunning adventure full of flavor,mountains,and legends come to life!
+🌶️🍜 Home of the famous mouth-numbing hotpot, it’s where your taste buds go to train like warriors!
+⛰️🐉 With misty peaks, ancient temples, and giant pandas chilling in the wild it’s straight out of a movie.
+🥋🐼 And yes this is Kung Fu Panda’s homeland!You’ll half expect Po to roll out offering dumplings!
+❤️🇨🇳 Sichuan is bold,beautiful,and bursting with culture once you go, your soul stays kung fu-powered forever!
+  </p>
+</section>
+
+
+
+<div style="margin: 40px 0; text-align: center;">
+  <a href="page2.html"><button>Prev</button></a>
+  <a href="page4.html"><button>Next</button></a>
+</div>
+
+<footer>
+  <a href="https://www.linkedin.com/in/fredrick-ondara-617570339">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" width="24" height="24" />
+    <p>&#8482; Active on LinkedIn</p>
+  </a>
+  <p>WhatsApp: +254703589175 & +254731055192</p>
+</footer>
+<audio id="bg-music" loop>
+  <source src="noma.mp3" type="audio/mp3" />
+</audio>
+
+<!-- Top Buttons -->
+<button id="music-toggle" onclick="toggleMusic()">Play Music</button>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("menu");
+    menu.classList.toggle("active");
+  }
+
+  const music = document.getElementById("bg-music");
+  const musicBtn = document.getElementById("music-toggle");
+
+  function toggleMusic() {
+    if (music.paused) {
+      music.play();
+      musicBtn.innerText = "Pause Music";
+    } else {
+      music.pause();
+      musicBtn.innerText = "Play Music";
+    }
+  }
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+</script>
+
+</body>
+</html>

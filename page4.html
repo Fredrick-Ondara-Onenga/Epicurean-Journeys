@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Poetica</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Open Sans', sans-serif;
+      height: 100%;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(1); /* You can reduce to 0.8 if needed */
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(6px);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 500;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 4px 0;
+      transition: 0.4s;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(0,0,0,0.8);
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 10px 0;
+      }
+
+      nav a {
+        padding: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    .titles-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+      text-shadow: 1px 1px 3px #000;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .titles-section h2 {
+      font-size: 2.7rem;
+      font-weight: 400;
+      margin-bottom: 30px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      width: 90%;
+      max-width: 600px;
+      background-color: rgba(255, 255, 255, 0.85);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    li a {
+      display: block;
+      padding: 15px;
+      color: #333;
+      text-decoration: none;
+      border-bottom: 1px solid #ccc;
+    }
+
+    li a:hover {
+      background-color: #333;
+      color: burlywood;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(6px);
+      color: white;
+      text-shadow: 1px 1px 3px #000;
+    }
+
+    footer img {
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <video autoplay muted loop class="bg-video" playsinline>
+    <source src="title.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <header>
+    <div class="logo">Poetry in Motionless Moments</div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <nav id="navMenu">
+      <a href="page1.html">Home</a>
+      <a href="page2.html">Foods</a>
+      <a href="page3.html">Places</a>
+    </nav>
+  </header>
+
+  <section class="titles-section">
+    <h2>Titles</h2>
+    <ul>
+      <li><a href="page6.html">Where Love Begins</a></li>
+      <li><a href="page7.html">Voices from the Streets</a></li>
+      <li><a href="page8.html">When I Met You</a></li>
+      <li><a href="page9.html">You, From Across the Room</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <a href="https://www.linkedin.com/in/fredrick-ondara-617570339" style="color: white;">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" width="24" height="24">
+      <p style="display: inline-block; margin-left: 5px;">&#8482; Active on LinkedIn</p>
+    </a>
+    <p>WhatsApp: +254703589175 & +254731055192</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('navMenu');
+      menu.classList.toggle('show');
+    }
+  </script>
+
+</body>
+</html>

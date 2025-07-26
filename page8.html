@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Where Love Begins</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      margin: 0;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      color: #fff;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo-title {
+      font-size: 1.7rem;
+      font-weight: bold;
+      text-align: center;
+      width: 100%;
+    }
+
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav a {
+      color: bisque;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 4px 0;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+        margin-left: auto;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.85);
+        width: 100%;
+        display: none;
+        padding: 1rem 0;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      .logo-title {
+        order: -1;
+        width: 100%;
+      }
+    }
+
+    main {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background-color: rgba(255, 255, 255, 0.88);
+      border-radius: 10px;
+      color: #000;
+      font-size: 1rem;
+      line-height: 1.8;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    h3 {
+      text-align: center;
+      font-style: italic;
+      color: darkred;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+  </style>
+</head>
+<body>
+
+  <video autoplay muted loop id="bg-video">
+    <source src="video5.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <header>
+    <div class="logo-title">When I Met You</div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <nav id="navMenu">
+      <a href="page1.html">Home</a>
+      <a href="page4.html">Poems</a>
+      <a href="page2.html">Foods</a>
+    </nav>
+  </header>
+
+  <main>
+    <h3><i>Dive in</i></h3>
+    <hr>
+    <p>
+      <strong>The Day Our Worlds Collided</strong><br><br>
+      The world was a canvas, muted and grey,<br>
+      Then you arrived, and colors found their way.<br>
+      A spark ignited, a sudden, sweet surprise,<br>
+      Reflected in the wonder of your eyes.<br><br>
+
+      My heart, a drum, began to softly beat,<br>
+      A rhythm new, a love I couldn't defeat.<br>
+      The ordinary vanished, dreams took flight,<br>
+      Bathed in the sunshine of your gentle light.<br><br>
+
+      In that first glance, a future I could see,<br>
+      A tapestry of moments, woven just for me.<br>
+      And though time may pass and seasons may entwine,<br>
+      That first sweet meeting will forever shine.<br><br>
+
+      It's a reminder that love can blossom in unexpected places<br>
+      And change our perspective on life.
+    </p>
+  </main>
+
+  <footer>
+    © Alex Fredie Records
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navMenu").classList.toggle("show");
+    }
+  </script>
+</body>
+</html>
